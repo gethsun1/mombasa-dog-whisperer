@@ -1,9 +1,17 @@
-// src/app/page.tsx
+import { Typography, Button } from '@mui/material';
+
 export default function HomePage() {
   return (
     <main>
-      <h1>Welcome to Mombasa Dog Whisperer</h1>
-      <p>Your professional dog training and handling services in Mombasa.</p>
+      <Typography variant="h2" component="h1" gutterBottom>
+        Welcome to Mombasa Dog Whisperer
+      </Typography>
+      <Typography variant="body1">
+        Your professional dog training and handling services in Mombasa.
+      </Typography>
+      <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+        Book Now
+      </Button>
     </main>
   );
 }
