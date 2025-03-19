@@ -45,7 +45,7 @@ export default function Hero() {
         }}
       >
         <Typewriter
-          words={['Your professional dog trainer and handler in Mombasa']}
+          words={['Your Professional Dog Trainer &  Handler in Mombasa']}
           loop={0}
           cursor
           cursorStyle="|"
