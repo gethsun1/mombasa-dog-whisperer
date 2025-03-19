@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import SocialFooter from "@/components/SocialFooter";
-
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../theme";
@@ -31,9 +30,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="icon" href="/logo.jpg" />
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/jumakelly199/30min', text: 'Schedule time with me', color: '#669be8', textColor: '#ffffff' }); }</script>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
       </head>
       <body className={raleway.variable}>
         <ThemeProvider theme={theme}>

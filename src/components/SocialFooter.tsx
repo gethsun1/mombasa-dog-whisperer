@@ -38,7 +38,7 @@ export default function SocialFooter() {
 
       {/* Facebook Icon */}
       <IconButton
-        href="https://www.facebook.com/YourFacebookPage"
+        href="https://www.facebook.com/kelly.silver.125"
         target="_blank"
         sx={{ color: '#1877F2' }} // Facebook blue
         aria-label="Facebook"
@@ -58,7 +58,7 @@ export default function SocialFooter() {
 
       {/* Twitter Icon */}
       <IconButton
-        href="https://twitter.com/YourTwitterHandle"
+        href="https://twitter.com/juma_kelly254"
         target="_blank"
         aria-label="Twitter"
       >
@@ -68,7 +68,7 @@ export default function SocialFooter() {
 
       {/* Instagram Icon */}
       <IconButton
-        href="https://www.youtube.com/YourYouTubeChannel"
+        href="https://www.instagram.com/mombasadogwhisperer"
         target="_blank"
         sx={{ color: '#c13584' }} // IG dark pink
         aria-label="Instagram"
