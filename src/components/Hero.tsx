@@ -5,6 +5,15 @@ import { Typography, Button, Box } from '@mui/material';
 import { Typewriter } from 'react-simple-typewriter';
 
 export default function Hero() {
+  const handleBookNow = () => {
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initPopupWidget({ url: 'https://calendly.com/jumakelly199/30min' });
+      return false;
+    } else {
+      console.error('Calendly is not loaded');
+    }
+  };
+
   return (
     <Box sx={{ textAlign: 'center', mt: 5, color: 'black' }}>
       <Typography
@@ -21,7 +30,7 @@ export default function Hero() {
           fontStyle: 'italic',
           color: 'white',
           fontSize: '1rem',
-          minHeight: '3rem', // to prevent layout shift during typing
+          minHeight: '3rem',
         }}
       >
         <Typewriter
@@ -34,7 +43,12 @@ export default function Hero() {
           delaySpeed={1000}
         />
       </Typography>
-      <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ mt: 2 }}
+        onClick={handleBookNow}
+      >
         Book Now
       </Button>
     </Box>
