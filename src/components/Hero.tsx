@@ -5,8 +5,13 @@ import { Typography, Button, Box } from '@mui/material';
 import { Typewriter } from 'react-simple-typewriter';
 import Script from 'next/script';
 
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
+
 export default function Hero() {
-  // Track when the Calendly script has loaded
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
 
   const handleBookNow = () => {
@@ -21,7 +26,6 @@ export default function Hero() {
 
   return (
     <Box sx={{ textAlign: 'center', mt: 5, color: 'black' }}>
-      {/* Load Calendly widget script inside the Hero component */}
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
@@ -60,7 +64,7 @@ export default function Hero() {
         sx={{ mt: 2 }}
         onClick={handleBookNow}
       >
-        Schedule Time With Me
+        Book Now
       </Button>
     </Box>
   );
