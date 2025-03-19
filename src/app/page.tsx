@@ -1,17 +1,12 @@
-import { Typography, Button } from '@mui/material';
+import React from 'react';
+import Hero from '@/components/Hero';
+import Background from '@/components/Background';
 
 export default function HomePage() {
   return (
     <main>
-      <Typography variant="h2" component="h1" gutterBottom>
-        Welcome to Mombasa Dog Whisperer
-      </Typography>
-      <Typography variant="body1">
-        Your professional dog training and handling services in Mombasa.
-      </Typography>
-      <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-        Book Now
-      </Button>
+      <Background />
+      <Hero />
     </main>
   );
 }
