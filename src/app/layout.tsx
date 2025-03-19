@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
+import SocialFooter from '@/components/SocialFooter';
+
 
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -36,6 +38,7 @@ export default function RootLayout({
           {/* CssBaseline kickstarts an elegant, consistent baseline */}
           <CssBaseline />
           {children}
+          <SocialFooter/>
         </ThemeProvider>
       </body>
     </html>

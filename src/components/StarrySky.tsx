@@ -12,6 +12,7 @@ export default class StarrySky extends React.Component {
     hasMounted: false,
   };
 
+  // Animate the dog paw "stars"
   starryNight = () => {
     anime({
       targets: ['#sky .star'],
@@ -25,6 +26,7 @@ export default class StarrySky extends React.Component {
     });
   };
 
+  // Animate the shooting stars (unchanged)
   shootingStars = () => {
     anime({
       targets: ['#shootingstars .wish'],
@@ -40,13 +42,15 @@ export default class StarrySky extends React.Component {
     });
   };
 
-  randomRadius = () => Math.random() * 0.7 + 0.6;
+  // Return a random font size between 10px and 20px for the paw
+  randomSize = () => Math.floor(Math.random() * 10 + 10);
 
+  // Return random positions based on viewport dimensions
   getRandomX = () => Math.floor(Math.random() * this.state.vw).toString();
   getRandomY = () => Math.floor(Math.random() * this.state.vh).toString();
 
   componentDidMount() {
-    // Now that we're on the client, set the dimensions and the flag
+    // Set viewport dimensions on the client
     this.setState({
       vw: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
       vh: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
@@ -59,23 +63,22 @@ export default class StarrySky extends React.Component {
 
   render() {
     const { num, hasMounted } = this.state;
-    // Until mounted, render nothing (or a placeholder)
     if (!hasMounted) return null;
 
     return (
       <div id="starry-sky">
         <svg id="sky" className={styles.sky}>
           {[...Array(num)].map((_, y) => (
-            <circle
+            <text
               key={y}
-              cx={this.getRandomX()}
-              cy={this.getRandomY()}
-              r={this.randomRadius()}
-              stroke="none"
-              strokeWidth="0"
+              x={this.getRandomX()}
+              y={this.getRandomY()}
+              fontSize={this.randomSize()}
               fill="red"
               className={`${styles.star} star`}
-            />
+            >
+              🐾
+            </text>
           ))}
         </svg>
         <div id="shootingstars" className={styles.shootingstars}>
@@ -84,8 +87,9 @@ export default class StarrySky extends React.Component {
               key={y}
               className={`${styles.wish} wish`}
               style={{
-                left: `${this.getRandomY()}px`,
-                top: `${this.getRandomX()}px`,
+                // For shooting stars, you might want to adjust these too
+                left: `${this.getRandomX()}px`,
+                top: `${this.getRandomY()}px`,
               }}
             />
           ))}
