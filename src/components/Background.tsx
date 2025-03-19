@@ -13,19 +13,38 @@ const images = [
   '/mombasabg6.jpg',
   '/mombasabg7.jpg',
   '/mombasabg8.jpg',
- 
-  
 ];
 
 export default function Background() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [frontImage, setFrontImage] = useState(images[0]);
+  const [backImage, setBackImage] = useState<string | null>(null);
+  const [fade, setFade] = useState(false);
+  const fadeDuration = 1000; // in ms
+  const displayDuration = 5000; // time per image
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // change image every 5 seconds
+      const currentIndex = images.indexOf(frontImage);
+      const nextIndex = (currentIndex + 1) % images.length;
+      
+      // Set the next image with initial opacity 0
+      setBackImage(images[nextIndex]);
+      
+      // Use a small delay to trigger the transition
+      setTimeout(() => {
+        setFade(true);
+      }, 50);
+      
+      // After fadeDuration, update the front image and reset fade/backImage
+      setTimeout(() => {
+        setFrontImage(images[nextIndex]);
+        setBackImage(null);
+        setFade(false);
+      }, fadeDuration + 50);
+      
+    }, displayDuration);
     return () => clearInterval(interval);
-  }, []);
+  }, [frontImage]);
 
   return (
     <div
@@ -35,21 +54,44 @@ export default function Background() {
         left: 0,
         width: '100vw',
         height: '100vh',
-        backgroundImage: `url(${images[currentIndex]})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        zIndex: -3, // base layer behind all
+        zIndex: -3,
       }}
     >
-      {/* Translucent Overlay */}
+      {/* Front (current) background */}
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)', // adjust opacity/color as needed
+          backgroundImage: `url(${frontImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transition: `opacity ${fadeDuration}ms ease-in-out`,
+          opacity: 1,
+        }}
+      />
+      {/* Back (fading in) background */}
+      {backImage && (
+        <div
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url(${backImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transition: `opacity ${fadeDuration}ms ease-in-out`,
+            opacity: fade ? 1 : 0,
+          }}
+        />
+      )}
+      {/* Darker Translucent Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)', // darker overlay
           zIndex: 1,
         }}
       />
@@ -57,8 +99,6 @@ export default function Background() {
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
           width: '100vw',
           height: '100vh',
           zIndex: 2,
