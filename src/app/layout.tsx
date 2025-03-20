@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   title: "Mombasa Dog Whisperer",
   description: "Professional dog training and handling services in Mombasa",
   icons: {
-    icon: "/logo.ico",
-    shortcut: "/logo.ico",
-    apple: "/logo.ico",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
@@ -38,8 +38,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/logo.ico" type="image/x-icon" />    
-        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />    
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
