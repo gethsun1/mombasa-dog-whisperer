@@ -12,10 +12,19 @@ const raleway = Raleway({
   variable: "--font-raleway",
 });
 
+
+
 export const metadata: Metadata = {
   title: "Mombasa Dog Whisperer",
   description: "Professional dog training and handling services in Mombasa",
+  icons: {
+    icon: "/logo.ico",
+    shortcut: "/logo.ico",
+    apple: "/logo.ico",
+  },
 };
+
+
 
 export default function RootLayout({
   children,
@@ -29,7 +38,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/logo.jpg" />
+        <link rel="icon" href="/logo.ico" type="image/x-icon" />    
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
