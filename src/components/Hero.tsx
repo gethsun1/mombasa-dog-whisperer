@@ -5,24 +5,28 @@ import { Typography, Button, Box } from '@mui/material';
 import { Typewriter } from 'react-simple-typewriter';
 import Script from 'next/script';
 
+
 declare global {
   interface Window {
-    Calendly: any;
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
   }
 }
+
 
 export default function Hero() {
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
 
-  const handleBookNow = () => {
-    if (calendlyLoaded && window.Calendly) {
-      window.Calendly.initPopupWidget({ 
-        url: 'https://calendly.com/jumakelly199/30min'
-      });
-    } else {
-      console.error('Calendly is not loaded yet');
-    }
-  };
+   const handleBookNow = () => {
+  if (calendlyLoaded && window.Calendly?.initPopupWidget) {
+    window.Calendly.initPopupWidget({
+      url: 'https://calendly.com/jumakelly199/30min',
+    });
+  } else {
+    console.error("Calendly is not loaded");
+  }
+};
 
   return (
     <Box sx={{ textAlign: 'center', mt: 5, color: 'black' }}>
@@ -64,7 +68,7 @@ export default function Hero() {
         sx={{ mt: 2 }}
         onClick={handleBookNow}
       >
-        Book Now
+        Schedule A Quick Call With Me
       </Button>
     </Box>
   );
