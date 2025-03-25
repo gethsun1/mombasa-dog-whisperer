@@ -28,7 +28,7 @@ export default function SocialFooter() {
 
       {/* TikTok Icon */}
       <IconButton
-        href="https://www.tiktok.com/@jumakelly199gmail.com"
+        href="https://www.tiktok.com/@mombasadogwhisperer"
         target="_blank"
         sx={{ color: '#000000' }} // TikTok often uses black as a base
         aria-label="TikTok"

@@ -87,7 +87,7 @@ export default class StarrySky extends React.Component {
               key={y}
               className={`${styles.wish} wish`}
               style={{
-                // For shooting stars, you might want to adjust these too
+                
                 left: `${this.getRandomX()}px`,
                 top: `${this.getRandomY()}px`,
               }}
